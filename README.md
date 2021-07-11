@@ -11,11 +11,13 @@ Time how long it takes to calculate for primes under:
 
 ## Validation
 Validate prime counts are as follows:
+```
 100 : 25
 1000 : 168
 10000 : 1229
 100000 : 9592
 1000000 : 78498
+```
 
 ## Python
 Written using 3.6.9
