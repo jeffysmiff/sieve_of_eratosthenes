@@ -20,7 +20,7 @@ Validate prime counts are as follows:
 ```
 
 ## Python
-Written using 3.6.9
+Written using 3.9.6
 ```
 cd python
 source venv/bin/activate
