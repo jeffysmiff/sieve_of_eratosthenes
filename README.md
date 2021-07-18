@@ -27,3 +27,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 python sieveOfEratosthenes.py
 ```
+
+## Node
+Written using 16.4.1
+```
+cd node
+npm install
+npm test
+```
