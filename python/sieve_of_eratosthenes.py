@@ -1,6 +1,7 @@
 from bitarray import bitarray
 from math import isqrt
 from datetime import datetime
+from json import dumps
 
 expectations = {
     100 : 25,
@@ -21,6 +22,7 @@ class Sieve_of_eratoschenes:
         # Chop out even numbers over 2
         for i in range(4,len(self.primes),2):
             self.primes[i] = 0
+        self.result = {}
 
     def set_bit(self, n):
         self.primes[n] = 0
@@ -44,15 +46,24 @@ class Sieve_of_eratoschenes:
                     if j != i:
                         self.set_bit(j)
         end_time = datetime.now()
-        print(f'Took {(end_time-start_time).microseconds}\u03BCs to calc primes under {self.max_num}')
+        duration = (end_time-start_time).microseconds
+        self.result = {'primes': self.primes.count(1), 'duration': duration}
         # self.print_primes()
-        return self.primes.count(1)
+        return self.result
+    
+    def get_results(self):
+        return self.result
 
 def main():
+    results = {
+        'python': {}
+    }
     for key in expectations.keys():
         expectation = expectations[key]
         result = Sieve_of_eratoschenes(key).calc_primes()
-        assert result == expectation, f'Number of primes for {key} not as expected, got {result}, expected {expectation}'
+        results['python'][str(key)] = result
+        assert results['python'][str(key)]['primes'] == expectation, f'Number of primes for {key} not as expected, got {result}, expected {expectation}'
+    print(f'{dumps(results)}')
 
 if __name__ == "__main__":
     # execute only if run as a script

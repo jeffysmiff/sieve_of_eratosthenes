@@ -1,0 +1,1 @@
+{"python": {"100": {"primes": 25, "duration": 29}, "1000": {"primes": 168, "duration": 276}, "10000": {"primes": 1229, "duration": 3333}, "100000": {"primes": 9592, "duration": 37389}, "1000000": {"primes": 78498, "duration": 418725}}}
