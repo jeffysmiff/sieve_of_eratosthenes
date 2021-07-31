@@ -15,7 +15,8 @@ describe('Test prime sieve up to 1000000', function() {
   for (const [key, value] of Object.entries(expectations)) {
     it('Test for primes up to ' + key, async function() {
       const result = await new SieveOfEratosthenes(key).calcPrimes();
-      expect(result).to.equal(value, 'Result: ' + result + ' does not match expectation: ' + value);
+      expect(result['primes']).to.equal(value, 'Result: ' +
+        result + ' does not match expectation: ' + value);
     });
   }
 });
