@@ -6,73 +6,77 @@
 			let nodeRes = undefined;
 			let pythonRes = undefined;
 			let javaRes = undefined;
-			$.getJSON("node.json", function(data){
-				nodeRes = data;
-        	});
-			$.getJSON("python.json", function(data){
-				pythonRes = data;
-        	});
-			$.getJSON("java.json", function(data){
-				javaRes = data;
-        	});
-			let chart = new CanvasJS.Chart("chartContainer", {
-				animationEnabled: true,
-				exportEnabled: true,
-				title:{
-					text: "Sieve of Eratosthenes - Results"
-				},
-				axisX: {
-				},
-				axisY: {
-				},
-				toolTip: {
-					shared: true
-				},
-				legend: {
-					cursor: "pointer",
-					itemclick: toggleDataSeries
-				},
-				data: [
-					{
-					type: "rangeColumn",
-					name: "Node",
-					showInLegend: true,
-					dataPoints: [   
-						{ x: '100', y: nodeRes.node["100"].duration },
-						{ x: '1000', y: nodeRes.node["1000"].duratio },
-						{ x: '10000', y: nodeRes.node["10000"].duration },
-						{ x: '100000', y: nodeRes.node["100000"].duration },
-						{ x: '1000000', y: nodeRes.node["1000000"].duration }
-					]},
-					{
+			let chart = undefined;
+			$.when(
+				$.getJSON("node.json", function(data){
+					nodeRes = data;
+				}),
+				$.getJSON("python.json", function(data){
+					pythonRes = data;
+				}),
+				$.getJSON("java.json", function(data){
+					javaRes = data;
+				})
+			).then(
+				chart = new CanvasJS.Chart("chartContainer", {
+					animationEnabled: true,
+					exportEnabled: true,
+					title:{
+						text: "Sieve of Eratosthenes - Results"
+					},
+					axisX: {
+					},
+					axisY: {
+					},
+					toolTip: {
+						shared: true
+					},
+					legend: {
+						cursor: "pointer",
+						itemclick: toggleDataSeries
+					},
+					data: [
+						{
 						type: "rangeColumn",
-						name: "Python",
+						name: "Node",
 						showInLegend: true,
-						yValueFormatString: "#0.## °C",
-						xValueFormatString: "MMM, YYYY",
 						dataPoints: [   
-						{ x: '100', y: pythonRes.python["100"].duration },
-						{ x: '1000', y: pythonRes.python["1000"].duratio },
-						{ x: '10000', y: pythonRes.python["10000"].duration },
-						{ x: '100000', y: pythonRes.python["100000"].duration },
-						{ x: '1000000', y: pythonRes.python["1000000"].duration }
-					]},
-					{
-						type: "rangeColumn",
-						name: "Java",
-						showInLegend: true,
-						yValueFormatString: "#0.## °C",
-						xValueFormatString: "MMM, YYYY",
-						dataPoints: [   
-						{ x: '100', y: javaRes.java["100"].duration },
-						{ x: '1000', y: javaRes.java["1000"].duratio },
-						{ x: '10000', y: javaRes.java["10000"].duration },
-						{ x: '100000', y: javaRes.java["100000"].duration },
-						{ x: '1000000', y: javaRes.java["1000000"].duration }
-					]}
-				]
-			});
-			chart.render();			
+							{ x: '100', y: nodeRes.node["100"].duration },
+							{ x: '1000', y: nodeRes.node["1000"].duratio },
+							{ x: '10000', y: nodeRes.node["10000"].duration },
+							{ x: '100000', y: nodeRes.node["100000"].duration },
+							{ x: '1000000', y: nodeRes.node["1000000"].duration }
+						]},
+						{
+							type: "rangeColumn",
+							name: "Python",
+							showInLegend: true,
+							yValueFormatString: "#0.## °C",
+							xValueFormatString: "MMM, YYYY",
+							dataPoints: [   
+							{ x: '100', y: pythonRes.python["100"].duration },
+							{ x: '1000', y: pythonRes.python["1000"].duratio },
+							{ x: '10000', y: pythonRes.python["10000"].duration },
+							{ x: '100000', y: pythonRes.python["100000"].duration },
+							{ x: '1000000', y: pythonRes.python["1000000"].duration }
+						]},
+						{
+							type: "rangeColumn",
+							name: "Java",
+							showInLegend: true,
+							yValueFormatString: "#0.## °C",
+							xValueFormatString: "MMM, YYYY",
+							dataPoints: [   
+							{ x: '100', y: javaRes.java["100"].duration },
+							{ x: '1000', y: javaRes.java["1000"].duratio },
+							{ x: '10000', y: javaRes.java["10000"].duration },
+							{ x: '100000', y: javaRes.java["100000"].duration },
+							{ x: '1000000', y: javaRes.java["1000000"].duration }
+						]}
+					]
+				}),
+				chart.render()
+			);
 		});
 		function toggleDataSeries(e){
 			if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
