@@ -6,14 +6,16 @@
 			let nodeRes = undefined;
 			let pythonRes = undefined;
 			let javaRes = undefined;
-			$.getJSON("node.json", fundtion(data){
+			$.getJSON("node.json", function(data){
+				console.log(data.node);
+				console.log(data.node.100);
 				nodeRes = data;
-			});
+        	});
 			$.getJSON("python.json", fundtion(data) {
-				nodeRes = data;
+				pythonRes = data;
 			});
 			$.getJSON("java.json", fundtion(data) {
-				nodeRes = data;
+				javaRes = data;
 			});
 			let chart = new CanvasJS.Chart("chartContainer", {
 				animationEnabled: true,
