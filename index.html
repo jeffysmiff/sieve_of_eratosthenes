@@ -3,14 +3,90 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 		$( document ).ready(function() {
-			$.getJSON('node.json', function(data) {
-				console.log(JSON.stringify(data,null,2));
+			let nodeRes = undefined;
+			let pythonRes = undefined;
+			let javaRes = undefined;
+			$.getJSON('node.json', fundtion(data) {
+				nodeRes = data;
 			});
+			$.getJSON('python.json', fundtion(data) {
+				nodeRes = data;
+			});
+			$.getJSON('java.json', fundtion(data) {
+				nodeRes = data;
+			});
+			let chart = new CanvasJS.Chart("chartContainer", {
+				animationEnabled: true,
+				exportEnabled: true,
+				title:{
+					text: "Sieve of Eratosthenes - Results"
+				},
+				axisX: {
+				},
+				axisY: {
+				},
+				toolTip: {
+					shared: true
+				},
+				legend: {
+					cursor: "pointer",
+					itemclick: toggleDataSeries
+				},
+				data: [{
+					type: "rangeColumn",
+					name: "Node",
+					showInLegend: true,
+					dataPoints: [   
+						{ x: '100', y: nodeRes.node.100.duration },
+						{ x: '1000', y: nodeRes.node.1000.duratio },
+						{ x: '10000', y: nodeRes.node.10000.duration },
+						{ x: '100000', y: nodeRes.node.100000.duration },
+						{ x: '1000000', y: nodeRes.node.1000000.duration }
+					]},
+					{
+						type: "rangeColumn",
+						name: "Python",
+						showInLegend: true,
+						yValueFormatString: "#0.## °C",
+						xValueFormatString: "MMM, YYYY",
+						dataPoints: [   
+						{ x: '100', y: pythonRes.node.100.duration },
+						{ x: '1000', y: pythonRes.node.1000.duratio },
+						{ x: '10000', y: pythonRes.node.10000.duration },
+						{ x: '100000', y: pythonRes.node.100000.duration },
+						{ x: '1000000', y: pythonRes.node.1000000.duration }
+					]},
+					{
+						type: "rangeColumn",
+						name: "Java",
+						showInLegend: true,
+						yValueFormatString: "#0.## °C",
+						xValueFormatString: "MMM, YYYY",
+						dataPoints: [   
+						{ x: '100', y: javaRes.java.100.duration },
+						{ x: '1000', y: javaRes.java.1000.duratio },
+						{ x: '10000', y: javaRes.java.10000.duration },
+						{ x: '100000', y: javaRes.java.100000.duration },
+						{ x: '1000000', y: javaRes.java.1000000.duration }
+					]},
+				}]
+			});
+			chart.render();			
 		});
+		function toggleDataSeries(e){
+			if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			}
+			else{
+				e.dataSeries.visible = true;
+			}
+			chart.render();
+		}
     </script>
 </head>
 <html>
 	<body>
-		<h1>Test</h1>
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	</body>
 </html>
