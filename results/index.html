@@ -38,11 +38,11 @@
 					name: "Node",
 					showInLegend: true,
 					dataPoints: [   
-						{ x: '100', y: nodeRes.node[100].duration },
-						{ x: '1000', y: nodeRes.node[1000].duratio },
-						{ x: '10000', y: nodeRes.node[10000].duration },
-						{ x: '100000', y: nodeRes.node[100000].duration },
-						{ x: '1000000', y: nodeRes.node[1000000].duration }
+						{ x: '100', y: nodeRes.node["100"].duration },
+						{ x: '1000', y: nodeRes.node["1000"].duratio },
+						{ x: '10000', y: nodeRes.node["10000"].duration },
+						{ x: '100000', y: nodeRes.node["100000"].duration },
+						{ x: '1000000', y: nodeRes.node["1000000"].duration }
 					]},
 					{
 						type: "rangeColumn",
@@ -51,11 +51,11 @@
 						yValueFormatString: "#0.## °C",
 						xValueFormatString: "MMM, YYYY",
 						dataPoints: [   
-						{ x: '100', y: pythonRes.node[100].duration },
-						{ x: '1000', y: pythonRes.node[1000].duratio },
-						{ x: '10000', y: pythonRes.node[10000].duration },
-						{ x: '100000', y: pythonRes.node[100000].duration },
-						{ x: '1000000', y: pythonRes.node[1000000].duration }
+						{ x: '100', y: pythonRes.python["100"].duration },
+						{ x: '1000', y: pythonRes.python["1000"].duratio },
+						{ x: '10000', y: pythonRes.python["10000"].duration },
+						{ x: '100000', y: pythonRes.python["100000"].duration },
+						{ x: '1000000', y: pythonRes.python["1000000"].duration }
 					]},
 					{
 						type: "rangeColumn",
@@ -64,11 +64,11 @@
 						yValueFormatString: "#0.## °C",
 						xValueFormatString: "MMM, YYYY",
 						dataPoints: [   
-						{ x: '100', y: javaRes.java[100].duration },
-						{ x: '1000', y: javaRes.java[1000].duratio },
-						{ x: '10000', y: javaRes.java[10000].duration },
-						{ x: '100000', y: javaRes.java[100000].duration },
-						{ x: '1000000', y: javaRes.java[1000000].duration }
+						{ x: '100', y: javaRes.java["100"].duration },
+						{ x: '1000', y: javaRes.java["1000"].duratio },
+						{ x: '10000', y: javaRes.java["10000"].duration },
+						{ x: '100000', y: javaRes.java["100000"].duration },
+						{ x: '1000000', y: javaRes.java["1000000"].duration }
 					]}
 				]
 			});
