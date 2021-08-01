@@ -32,7 +32,8 @@
 					cursor: "pointer",
 					itemclick: toggleDataSeries
 				},
-				data: [{
+				data: [
+					{
 					type: "rangeColumn",
 					name: "Node",
 					showInLegend: true,
@@ -68,8 +69,8 @@
 						{ x: '10000', y: javaRes.java[10000].duration },
 						{ x: '100000', y: javaRes.java[100000].duration },
 						{ x: '1000000', y: javaRes.java[1000000].duration }
-					]},
-				}]
+					]}
+				]
 			});
 			chart.render();			
 		});
