@@ -53,29 +53,13 @@
                     data: [
                         {
                             type: "column",
-                            name: "Node",
-                    		legendText: "Node",
+                            name: "Language",
+                    		legendText: "Language",
 		                    showInLegend: true, 
                             dataPoints: [   
-                                { label: "100", y: nodeRes.node["100"].duration }
-                            ]
-                        },
-                        {
-                            type: "column",
-                            name: "Python",
-                    		legendText: "Python",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "100", y: pythonRes.python["100"].duration }
-                            ]
-                        },
-                        {
-                            type: "column",
-                            name: "Java",
-                    		legendText: "Java",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "100", y: javaRes.java["100"].duration }
+                                { label: "Node", y: nodeRes.node["100"].duration },
+                                { label: "Python", y: pythonRes.python["100"].duration },
+                                { label: "Java", y: javaRes.java["100"].duration }
                             ]
                         }
                     ]
