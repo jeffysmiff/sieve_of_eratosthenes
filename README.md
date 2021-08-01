@@ -20,7 +20,7 @@ Validate prime counts are as follows:
 ```
 
 ## Results
-In the root directory, a JSON file is provided with results
+In the 'results' directory, a JSON file is provided with results
 for each language from my laptop so they can be compared.
 Each was run from it's Docker image.
 
