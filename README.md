@@ -3,11 +3,11 @@
 Various implementations of the prime sieve described [here:](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
 
 Time how long it takes to calculate for primes under:
-100
-1000
-10000
-100000
-1000000
+* 100
+* 1000
+* 10000
+* 100000
+* 1000000
 
 ## Validation
 Validate prime counts are as follows:
