@@ -17,7 +17,10 @@
 				$.getJSON("java.json", function(data){
 					javaRes = data;
 				})
-			).then(
+			).then(function() {
+				console.log(JSON.stringify(nodeRes,null,2)),
+				console.log(JSON.stringify(pythonRes,null,2)),
+				console.log(JSON.stringify(javaRes,null,2)),
 				chart = new CanvasJS.Chart("chartContainer", {
 					animationEnabled: true,
 					exportEnabled: true,
@@ -76,7 +79,7 @@
 					]
 				}),
 				chart.render()
-			);
+			});
 		});
 		function toggleDataSeries(e){
 			if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
