@@ -41,6 +41,14 @@ npm install
 npm test
 ```
 
+## Java
+Written using OpenJDK 11 using Maven for dependency management and build
+```
+cd java
+mvn clean package
+java -cp target/sieveoferatosthenes-1.0-SNAPSHOT.jar com.jksmith.sieveoferatosthenes.App
+```
+
 ## Docker
 ### Purpose
 In order to run in a reproducable, managed environment, the code
