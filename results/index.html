@@ -21,7 +21,7 @@
                 console.log(JSON.stringify(nodeRes,null,2)),
                 console.log(JSON.stringify(pythonRes,null,2)),
                 console.log(JSON.stringify(javaRes,null,2)),
-                chart = new CanvasJS.Chart("chartContainer", {
+                chart100 = new CanvasJS.Chart("chartContainer1", {
                     animationEnabled: true,
                     title:{
                         text: "Sieve of Eratosthenes - Results"
@@ -47,10 +47,206 @@
                     		legendText: "Node",
 		                    showInLegend: true, 
                             dataPoints: [   
-                                { label: "100", y: nodeRes.node["100"].duration },
-                                { label: "1000", y: nodeRes.node["1000"].duration },
-                                { label: "10000", y: nodeRes.node["10000"].duration },
-                                { label: "100000", y: nodeRes.node["100000"].duration },
+                                { label: "100", y: nodeRes.node["100"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Python",
+                    		legendText: "Python",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100", y: pythonRes.python["100"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Java",
+                    		legendText: "Java",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100", y: javaRes.java["100"].duration }
+                            ]
+                        }
+                    ]
+                }),
+                chart100.render(),
+                chart1000 = new CanvasJS.Chart("chartContainer2", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Sieve of Eratosthenes - Results"
+                    },	
+                    axisY: {
+                        title: "Duration (micros)",
+                        titleFontColor: "#4F81BC",
+                        lineColor: "#4F81BC",
+                        labelFontColor: "#4F81BC",
+                        tickColor: "#4F81BC"
+                    },
+                    toolTip: {
+                        shared: true
+                    },
+                    legend: {
+                        cursor:"pointer",
+                        itemclick: toggleDataSeries
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            name: "Node",
+                    		legendText: "Node",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "1000", y: nodeRes.node["1000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Python",
+                    		legendText: "Python",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "1000", y: pythonRes.python["1000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Java",
+                    		legendText: "Java",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "1000", y: javaRes.java["1000"].duration }
+                            ]
+                        }
+                    ]
+                }),
+                chart1000.render(),
+                chart10000 = new CanvasJS.Chart("chartContainer3", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Sieve of Eratosthenes - Results"
+                    },	
+                    axisY: {
+                        title: "Duration (micros)",
+                        titleFontColor: "#4F81BC",
+                        lineColor: "#4F81BC",
+                        labelFontColor: "#4F81BC",
+                        tickColor: "#4F81BC"
+                    },
+                    toolTip: {
+                        shared: true
+                    },
+                    legend: {
+                        cursor:"pointer",
+                        itemclick: toggleDataSeries
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            name: "Node",
+                    		legendText: "Node",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "10000", y: nodeRes.node["10000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Python",
+                    		legendText: "Python",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "10000", y: pythonRes.python["10000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Java",
+                    		legendText: "Java",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "10000", y: javaRes.java["10000"].duration }
+                            ]
+                        }
+                    ]
+                }),
+                chart10000.render(),
+                chart100000 = new CanvasJS.Chart("chartContainer4", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Sieve of Eratosthenes - Results"
+                    },	
+                    axisY: {
+                        title: "Duration (micros)",
+                        titleFontColor: "#4F81BC",
+                        lineColor: "#4F81BC",
+                        labelFontColor: "#4F81BC",
+                        tickColor: "#4F81BC"
+                    },
+                    toolTip: {
+                        shared: true
+                    },
+                    legend: {
+                        cursor:"pointer",
+                        itemclick: toggleDataSeries
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            name: "Node",
+                    		legendText: "Node",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100000", y: nodeRes.node["100000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Python",
+                    		legendText: "Python",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100000", y: pythonRes.python["100000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Java",
+                    		legendText: "Java",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100000", y: javaRes.java["100000"].duration }
+                            ]
+                        }
+                    ]
+                }),
+                chart100000.render(),
+                chart1000000 = new CanvasJS.Chart("chartContainer5", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Sieve of Eratosthenes - Results"
+                    },	
+                    axisY: {
+                        title: "Duration (micros)",
+                        titleFontColor: "#4F81BC",
+                        lineColor: "#4F81BC",
+                        labelFontColor: "#4F81BC",
+                        tickColor: "#4F81BC"
+                    },
+                    toolTip: {
+                        shared: true
+                    },
+                    legend: {
+                        cursor:"pointer",
+                        itemclick: toggleDataSeries
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            name: "Node",
+                    		legendText: "Node",
+		                    showInLegend: true, 
+                            dataPoints: [   
                                 { label: "1000000", y: nodeRes.node["1000000"].duration }
                             ]
                         },
@@ -60,10 +256,6 @@
                     		legendText: "Python",
 		                    showInLegend: true, 
                             dataPoints: [   
-                                { label: "100", y: pythonRes.python["100"].duration },
-                                { label: "1000", y: pythonRes.python["1000"].duration },
-                                { label: "10000", y: pythonRes.python["10000"].duration },
-                                { label: "100000", y: pythonRes.python["100000"].duration },
                                 { label: "1000000", y: pythonRes.python["1000000"].duration }
                             ]
                         },
@@ -73,16 +265,12 @@
                     		legendText: "Java",
 		                    showInLegend: true, 
                             dataPoints: [   
-                                { label: "100", y: javaRes.java["100"].duration },
-                                { label: "1000", y: javaRes.java["1000"].duration },
-                                { label: "10000", y: javaRes.java["10000"].duration },
-                                { label: "100000", y: javaRes.java["100000"].duration },
                                 { label: "1000000", y: javaRes.java["1000000"].duration }
                             ]
                         }
                     ]
                 }),
-                chart.render()
+                chart1000000.render(),
 			});
 		});
         function toggleDataSeries(e) {
@@ -91,13 +279,17 @@
             } else {
                 e.dataSeries.visible = true;
             }
-            e.chart.render();
+            e.chart100.render();
         }
     </script>
 </head>
 <html>
 	<body>
-		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer4" style="height: 370px; width: 100%;"></div>
+		<div id="chartContainer5" style="height: 370px; width: 100%;"></div>
 		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	</body>
 </html>
