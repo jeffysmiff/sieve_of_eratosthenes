@@ -3,8 +3,9 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 		$( document ).ready(function() {
-			const nodeRes = require('../node.json');
-			console.log(JSON.stringify(nodeRes,NULL,2));
+			$.getJSON('node.json', function(data) {
+				console.log(JSON.stringify(data.NULL,2));
+			});
 		});
     </script>
 </head>
