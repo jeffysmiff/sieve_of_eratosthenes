@@ -18,76 +18,81 @@
 					javaRes = data;
 				})
 			).then(function() {
-				console.log(JSON.stringify(nodeRes,null,2)),
-				console.log(JSON.stringify(pythonRes,null,2)),
-				console.log(JSON.stringify(javaRes,null,2)),
-				chart = new CanvasJS.Chart("chartContainer", {
-					animationEnabled: true,
-					exportEnabled: true,
-					title:{
-						text: "Sieve of Eratosthenes - Results"
-					},
-					axisX: {
-						title: "Max prime target"
-					},
-					axisY: {
-						title: "Duration (microsecs)"
-					},
-					toolTip: {
-						shared: true
-					},
-					legend: {
-						cursor: "pointer",
-						itemclick: toggleDataSeries
-					},
-					data: [
-						{
-						type: "rangeColumn",
-						name: "Node",
-						showInLegend: true,
-						dataPoints: [   
-							{ x: "100", y: nodeRes.node["100"].duration },
-							{ x: "1000", y: nodeRes.node["1000"].duratio },
-							{ x: "10000", y: nodeRes.node["10000"].duration },
-							{ x: "100000", y: nodeRes.node["100000"].duration },
-							{ x: "1000000", y: nodeRes.node["1000000"].duration }
-						]},
-						{
-							type: "rangeColumn",
-							name: "Python",
-							showInLegend: true,
-							dataPoints: [   
-							{ x: "100", y: pythonRes.python["100"].duration },
-							{ x: "1000", y: pythonRes.python["1000"].duratio },
-							{ x: "10000", y: pythonRes.python["10000"].duration },
-							{ x: "100000", y: pythonRes.python["100000"].duration },
-							{ x: "1000000", y: pythonRes.python["1000000"].duration }
-						]},
-						{
-							type: "rangeColumn",
-							name: "Java",
-							showInLegend: true,
-							dataPoints: [   
-							{ x: "100", y: javaRes.java["100"].duration },
-							{ x: "1000", y: javaRes.java["1000"].duratio },
-							{ x: "10000", y: javaRes.java["10000"].duration },
-							{ x: "100000", y: javaRes.java["100000"].duration },
-							{ x: "1000000", y: javaRes.java["1000000"].duration }
-						]}
-					]
-				}),
-				chart.render()
+                console.log(JSON.stringify(nodeRes,null,2)),
+                console.log(JSON.stringify(pythonRes,null,2)),
+                console.log(JSON.stringify(javaRes,null,2)),
+                chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Sieve of Eratosthenes - Results"
+                    },	
+                    axisY: {
+                        title: "Duration (micros)",
+                        titleFontColor: "#4F81BC",
+                        lineColor: "#4F81BC",
+                        labelFontColor: "#4F81BC",
+                        tickColor: "#4F81BC"
+                    },
+                    toolTip: {
+                        shared: true
+                    },
+                    legend: {
+                        cursor:"pointer",
+                        itemclick: toggleDataSeries
+                    },
+                    data: [
+                        {
+                            type: "column",
+                            name: "Node",
+                    		legendText: "Node",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100", y: nodeRes.node["100"].duration },
+                                { label: "1000", y: nodeRes.node["1000"].duration },
+                                { label: "10000", y: nodeRes.node["10000"].duration },
+                                { label: "100000", y: nodeRes.node["100000"].duration },
+                                { label: "1000000", y: nodeRes.node["1000000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Python",
+                    		legendText: "Python",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100", y: pythonRes.python["100"].duration },
+                                { label: "1000", y: pythonRes.python["1000"].duration },
+                                { label: "10000", y: pythonRes.python["10000"].duration },
+                                { label: "100000", y: pythonRes.python["100000"].duration },
+                                { label: "1000000", y: pythonRes.python["1000000"].duration }
+                            ]
+                        },
+                        {
+                            type: "column",
+                            name: "Java",
+                    		legendText: "Java",
+		                    showInLegend: true, 
+                            dataPoints: [   
+                                { label: "100", y: javaRes.java["100"].duration },
+                                { label: "1000", y: javaRes.java["1000"].duration },
+                                { label: "10000", y: javaRes.java["10000"].duration },
+                                { label: "100000", y: javaRes.java["100000"].duration },
+                                { label: "1000000", y: javaRes.java["1000000"].duration }
+                            ]
+                        }
+                    ]
+                }),
+                chart.render()
 			});
 		});
-		function toggleDataSeries(e){
-			if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-				e.dataSeries.visible = false;
-			}
-			else{
-				e.dataSeries.visible = true;
-			}
-			chart.render();
-		}
+        function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
     </script>
 </head>
 <html>
