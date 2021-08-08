@@ -79,9 +79,9 @@
                     })
                 ).then(function() {
                     let language = Object.keys(nodeRes)[0];
-                    let red = Math.floor(Math.random() * 255);
-                    let green = Math.floor(Math.random() * 255);
-                    let blue = Math.floor(Math.random() * 255);
+                    let red = 128 - Math.floor(Math.random() * 128);
+                    let green = 128 - Math.floor(Math.random() * 128);
+                    let blue = 128 - Math.floor(Math.random() * 128);
                     for(const [primeMax,primeRes] of Object.entries(nodeRes[language])) {
                         let chartName = "myChart" + primeMax;
                         charts[chartName].data.labels.push(language);
