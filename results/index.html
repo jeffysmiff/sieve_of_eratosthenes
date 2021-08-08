@@ -14,222 +14,114 @@
 			margin-right: 50px;
 			margin-bottom: 50px;
 			margin-top: 50px;
+            height: 400px;
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-		$( document ).ready(function() {
-			let nodeRes = undefined;
-			let pythonRes = undefined;
-			let javaRes = undefined;
-			let chart = undefined;
-			$.when(
-				$.getJSON("node.json", function(data){
-					nodeRes = data;
-				}),
-				$.getJSON("python.json", function(data){
-					pythonRes = data;
-				}),
-				$.getJSON("java.json", function(data){
-					javaRes = data;
-				})
-			).then(function() {
-                console.log(JSON.stringify(nodeRes,null,2)),
-                console.log(JSON.stringify(pythonRes,null,2)),
-                console.log(JSON.stringify(javaRes,null,2)),
-                chart100 = new CanvasJS.Chart("chartContainer1", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Sieve of Eratosthenes - Results to 100 Primes"
-                    },	
-                    axisY: {
-                        title: "Duration (micros)",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor:"pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [
-                        {
-                            type: "column",
-                            name: "Language",
-                    		legendText: "Language",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "Node", y: nodeRes.node["100"].duration },
-                                { label: "Python", y: pythonRes.python["100"].duration },
-                                { label: "Java", y: javaRes.java["100"].duration }
-                            ]
-                        }
-                    ]
-                }),
-                chart100.render(),
-                chart1000 = new CanvasJS.Chart("chartContainer2", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Sieve of Eratosthenes - Results to 1000 Primes"
-                    },	
-                    axisY: {
-                        title: "Duration (micros)",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor:"pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [
-                        {
-                            type: "column",
-                            name: "Language",
-                    		legendText: "Language",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "Node", y: nodeRes.node["1000"].duration },
-                                { label: "Python", y: pythonRes.python["1000"].duration },
-                                { label: "Java", y: javaRes.java["1000"].duration }
-                            ]
-                        }
-                    ]
-                }),
-                chart1000.render(),
-                chart10000 = new CanvasJS.Chart("chartContainer3", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Sieve of Eratosthenes - Results to 10000 Primes"
-                    },	
-                    axisY: {
-                        title: "Duration (micros)",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor:"pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [
-                        {
-                            type: "column",
-                            name: "Language",
-                    		legendText: "Language",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "Node", y: nodeRes.node["10000"].duration },
-                                { label: "Python", y: pythonRes.python["10000"].duration },
-                                { label: "Java", y: javaRes.java["10000"].duration }
-                            ]
-                        }
-                    ]
-                }),
-                chart10000.render(),
-                chart100000 = new CanvasJS.Chart("chartContainer4", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Sieve of Eratosthenes - Results to 100000 Primes"
-                    },	
-                    axisY: {
-                        title: "Duration (micros)",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor:"pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [
-                        {
-                            type: "column",
-                            name: "Language",
-                    		legendText: "Language",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "Node", y: nodeRes.node["100000"].duration },
-                                { label: "Python", y: pythonRes.python["100000"].duration },
-                                { label: "Java", y: javaRes.java["100000"].duration }
-                            ]
-                        }
-                    ]
-                }),
-                chart100000.render(),
-                chart1000000 = new CanvasJS.Chart("chartContainer5", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Sieve of Eratosthenes - Results to 1000000 Primes"
-                    },	
-                    axisY: {
-                        title: "Duration (micros)",
-                        titleFontColor: "#4F81BC",
-                        lineColor: "#4F81BC",
-                        labelFontColor: "#4F81BC",
-                        tickColor: "#4F81BC"
-                    },
-                    toolTip: {
-                        shared: true
-                    },
-                    legend: {
-                        cursor:"pointer",
-                        itemclick: toggleDataSeries
-                    },
-                    data: [
-                        {
-                            type: "column",
-                            name: "Language",
-                    		legendText: "Language",
-		                    showInLegend: true, 
-                            dataPoints: [   
-                                { label: "Node", y: nodeRes.node["1000000"].duration },
-                                { label: "Python", y: pythonRes.python["1000000"].duration },
-                                { label: "Java", y: javaRes.java["1000000"].duration }
-                            ]
-                        }
-                    ]
-                }),
-                chart1000000.render()
-			});
-		});
-        function toggleDataSeries(e) {
-            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            } else {
-                e.dataSeries.visible = true;
-            }
-            e.chart100.render();
+        function baseName(str) {
+            var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+            if(base.lastIndexOf(".") != -1)       
+                base = base.substring(0, base.lastIndexOf("."));
+            return base;
         }
+
+        $( document ).ready(function() {
+            var filenames = [
+                "python.json",
+                "node.json",
+                "java.json"
+            ];
+            var charts = {
+                "myChart100" : undefined,
+                "myChart1000" : undefined,
+                "myChart10000" : undefined,
+                "myChart100000" : undefined,
+                "myChart1000000" : undefined,
+            }
+            // initialise the charts with empty data
+            for(const [key,value] of Object.entries(charts)) {
+                let chartCtx = $('#' + key)[0].getContext('2d');
+                charts[key] = new Chart(chartCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            data: [],
+                            backgroundColor: [
+                            ],
+                            borderColor: [
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            display: true,
+                            title: 'Duration to calc primes under ' + key.substring(7)
+                        }
+                    }
+                });
+            }
+            console.log(filenames);
+            let count = 1;
+            for( let filename of filenames ) {
+                let nodeRes = undefined;
+                let basename = baseName(filename);
+                $.when(
+                    $.getJSON(filename, function(data){
+                        nodeRes = data;
+                    })
+                ).then(function() {
+                    let language = Object.keys(nodeRes)[0];
+                    let red = Math.floor(Math.random() * 255);
+                    let green = Math.floor(Math.random() * 255);
+                    let blue = Math.floor(Math.random() * 255);
+                    for(const [primeMax,primeRes] of Object.entries(nodeRes[language])) {
+                        let chartName = "myChart" + primeMax;
+                        charts[chartName].data.labels.push(language);
+                        charts[chartName].data.datasets[0].backgroundColor.push("rgba(" + red + ", " + green + ", " + blue + ", 0.2)");
+                        charts[chartName].data.datasets[0].borderColor.push("rgba(" + red + ", " + green + ", " + blue + ", 0.2)");
+                        charts[chartName].data.datasets[0].data.push(primeRes.duration);
+                        charts[chartName].update();
+                    }
+                    count++;
+                });
+            }
+        });
     </script>
 </head>
 <html>
 	<body>
 		<div class="container">
-			<div class="box" id="chartContainer1" style="height: 370px;"></div>
-			<div class="box" id="chartContainer2" style="height: 370px;"></div>
-			<div class="box" id="chartContainer3" style="height: 370px;"></div>
+			<div class="box" id="chartContainer100">
+                <h1>Duration of primes under 100</h1>
+                <canvas id="myChart100" height="80%" width="100%"></canvas>
+            </div>
+			<div class="box" id="chartContainer1000">
+                <h1>Duration of primes under 1000</h1>
+                <canvas id="myChart1000" height="80%" width="100%"></canvas>
+            </div>
+			<div class="box" id="chartContainer10000">
+                <h1>Duration of primes under 10000</h1>
+                <canvas id="myChart10000" height="80%" width="100%"></canvas>
+            </div>
 		</div>
 		<div class="container">
-			<div class="box" id="chartContainer4" style="height: 370px;"></div>
-			<div class="box" id="chartContainer5" style="height: 370px;"></div>
+			<div class="box" id="chartContainer100000">
+                <h1>Duration of primes under 100000</h1>
+                <canvas id="myChart100000" height="80%" width="100%"></canvas>
+            </div>
+			<div class="box" id="chartContainer1000000">
+                <h1>Duration of primes under 1000000</h1>
+                <canvas id="myChart1000000" height="80%" width="100%"></canvas>
+            </div>
 		</div>
-		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
 	</body>
 </html>
