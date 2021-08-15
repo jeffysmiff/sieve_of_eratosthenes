@@ -37,16 +37,13 @@
         "es6": true
     },
     "parserOptions": {
-      "ecmaVersion": 6
+      "ecmaVersion": 2018,
+      "sourceType": "module"
     },
     "rules" : {
       "max-len": [2, 120, 4, {"ignoreUrls": true}],
       "no-console": 0,
       "require-jsdoc" : 0
-    },
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
     }
   },
   "eslintIgnore": [
