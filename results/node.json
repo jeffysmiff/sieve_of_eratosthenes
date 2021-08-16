@@ -1,1 +1,1 @@
-{"node":{"100":{"primes":25,"duration":415},"1000":{"primes":168,"duration":1045},"10000":{"primes":1229,"duration":9692},"100000":{"primes":9592,"duration":30974},"1000000":{"primes":78498,"duration":314589}}}
+{"node":{"100":{"primes":25,"duration":248},"1000":{"primes":168,"duration":744},"10000":{"primes":1229,"duration":5018},"100000":{"primes":9592,"duration":18747},"1000000":{"primes":78498,"duration":193511}}}

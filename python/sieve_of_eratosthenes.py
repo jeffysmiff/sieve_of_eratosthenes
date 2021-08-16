@@ -11,7 +11,7 @@ expectations = {
     1000000 : 78498
 }
 
-class Sieve_of_eratoschenes:
+class Sieve_of_eratosthenes:
     def __init__(self, max_num):
         self.max_num = max_num
         self.primes = bitarray(int(self.max_num))
@@ -60,7 +60,7 @@ def main():
     }
     for key in expectations.keys():
         expectation = expectations[key]
-        result = Sieve_of_eratoschenes(key).calc_primes()
+        result = Sieve_of_eratosthenes(key).calc_primes()
         results['python'][str(key)] = result
         assert results['python'][str(key)]['primes'] == expectation, f'Number of primes for {key} not as expected, got {result}, expected {expectation}'
     print(f'{dumps(results)}')

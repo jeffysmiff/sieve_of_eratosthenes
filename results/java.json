@@ -1,1 +1,1 @@
-{"java":{"100":{"primes":25,"duration":142},"1000000":{"primes":78498,"duration":14555},"100000":{"primes":9592,"duration":6116},"1000":{"primes":168,"duration":690},"10000":{"primes":1229,"duration":1082}}}
+{"java":{"100":{"primes":25,"duration":50},"1000000":{"primes":78498,"duration":10671},"100000":{"primes":9592,"duration":4065},"1000":{"primes":168,"duration":398},"10000":{"primes":1229,"duration":733}}}
