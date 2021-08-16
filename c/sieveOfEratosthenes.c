@@ -111,7 +111,7 @@ int main(int argc, char** argv) {
     printf("{\"c\":{");
     for(int i=0; i<numMaxPrimes;i++) {
         struct PrimeResult result = calc_primes(maxPrimes[i]);
-        printf("\"%d\":{\"primes\":%d,\"duration\":%u}", maxPrimes[i],result.primes, result.duration);
+        printf("\"%d\":{\"primes\":%d,\"duration\":%lu}", maxPrimes[i],result.primes, result.duration);
         if(i<numMaxPrimes-1) {
             printf(",");
         }
