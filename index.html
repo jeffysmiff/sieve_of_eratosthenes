@@ -2,20 +2,15 @@
 <head>
 	<style type="text/css">
 		.container {
-			height: 100%;
-			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-		.box {
-			width: 33%;
-			margin-left: 50px;
-			margin-right: 50px;
-			margin-bottom: 50px;
-			margin-top: 50px;
+            display: grid;
+            repeat(3, 1fr);
+            grid-gap: 50px;
+            justify-content: center;
+            grid-auto-flow: column;
+        }
+        .box {
             height: 400px;
-		}
+        }
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -48,6 +43,7 @@
                     data: {
                         labels: [],
                         datasets: [{
+                            label: [],
                             data: [],
                             backgroundColor: [
                             ],
@@ -59,12 +55,43 @@
                     options: {
                         scales: {
                             y: {
+                                title: {
+                                    display: true,
+                                    text: 'Elapsed time (\u00b5s)'
+                                },
                                 beginAtZero: true
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Language'
+                                }
+                            }
+                        },
+                        datasets: {
+                            bar: {
+                                label: {
+                                    display: false
+                                }
                             }
                         },
                         plugins: {
                             display: true,
-                            title: 'Duration to calc primes under ' + key.substring(7)
+                            title: {
+                                text: 'Elapsed time to calc primes under ' + key.substring(7),
+                                display: true,
+                                align: 'center',
+                                font: {
+                                    family: 'Helvetica',
+                                    size: 18
+                                }
+                            },
+                            legend: {
+                                labels: {
+                                    display: false,
+                                    boxWidth: 0
+                                }
+                            }
                         }
                     }
                 });
@@ -80,13 +107,45 @@
                     })
                 ).then(function() {
                     let language = Object.keys(nodeRes)[0];
-                    let red = 128 - Math.floor(Math.random() * 128);
-                    let green = 128 - Math.floor(Math.random() * 128);
-                    let blue = 128 - Math.floor(Math.random() * 128);
+                    // Set up the colourbars - hard coded for each language
+                    let red = 0;
+                    let blue = 0;
+                    let green = 0;
+                    switch(language) {
+                        case "node":
+                            // Red
+                            red = 255;
+                            green = 0;
+                            blue = 0;
+                            break;
+                        case "python":
+                            // Green
+                            red = 0;
+                            green = 255;
+                            blue = 0;
+                            break;
+                        case "java":
+                            // Blue
+                            red = 0;
+                            green = 0;
+                            blue = 255;
+                            break;
+                        case "c":
+                            // Magenta
+                            red = 255;
+                            green = 0;
+                            blue = 255;
+                            break;
+                        default:
+                            red = 0;
+                            green = 0;
+                            blue = 0;
+                            break;
+                    }
                     for(const [primeMax,primeRes] of Object.entries(nodeRes[language])) {
                         let chartName = "myChart" + primeMax;
                         charts[chartName].data.labels.push(language);
-                        charts[chartName].data.datasets[0].backgroundColor.push("rgba(" + red + ", " + green + ", " + blue + ", 0.2)");
+                        charts[chartName].data.datasets[0].backgroundColor.push("rgba(" + red + ", " + green + ", " + blue + ", 0.6)");
                         charts[chartName].data.datasets[0].borderColor.push("rgba(" + red + ", " + green + ", " + blue + ", 0.2)");
                         charts[chartName].data.datasets[0].data.push(primeRes.duration);
                         charts[chartName].update();
@@ -101,26 +160,21 @@
 	<body>
 		<div class="container">
 			<div class="box" id="chartContainer100">
-                <h1>Duration of primes under 100</h1>
-                <canvas id="myChart100" height="80%" width="100%"></canvas>
+                <canvas id="myChart100" width="320" height="320" class="chartcanvas"></canvas>
             </div>
 			<div class="box" id="chartContainer1000">
-                <h1>Duration of primes under 1000</h1>
-                <canvas id="myChart1000" height="80%" width="100%"></canvas>
+                <canvas id="myChart1000" width="320" height="320" class="chartcanvas"></canvas>
             </div>
 			<div class="box" id="chartContainer10000">
-                <h1>Duration of primes under 10000</h1>
-                <canvas id="myChart10000" height="80%" width="100%"></canvas>
+                <canvas id="myChart10000" width="320" height="320" class="chartcanvas"></canvas>
             </div>
-		</div>
-		<div class="container">
+        </div>
+        <div class="container">
 			<div class="box" id="chartContainer100000">
-                <h1>Duration of primes under 100000</h1>
-                <canvas id="myChart100000" height="80%" width="100%"></canvas>
+                <canvas id="myChart100000" width="320" height="320" class="chartcanvas"></canvas>
             </div>
 			<div class="box" id="chartContainer1000000">
-                <h1>Duration of primes under 1000000</h1>
-                <canvas id="myChart1000000" height="80%" width="100%"></canvas>
+                <canvas id="myChart1000000" width="320" height="320" class="chartcanvas"></canvas>
             </div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
